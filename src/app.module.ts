@@ -15,6 +15,8 @@ import { UserTypeModule } from './user_type/user_type.module';
 
 import { UserInformationModule } from './user_information/user_information.module';
 import { GenderModule } from './gender/gender.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { GenderModule } from './gender/gender.module';
     UserInformationModule,
     GenderModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
