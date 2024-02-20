@@ -27,7 +27,7 @@ export class UserInformationService {
   // Encontrar todos los registros
   async findAll(): Promise<UserInformation[]> {
     return this.userInformationRepository.find({
-      relations: ['user', 'gender'],
+      relations: ['user', 'gender', 'doctorDetails'],
     });
   }
 
@@ -35,7 +35,7 @@ export class UserInformationService {
   async findOne(id: number): Promise<UserInformation> {
     const userInformation = await this.userInformationRepository.findOne({
       where: { id },
-      relations: ['user', 'gender'],
+      relations: ['user', 'gender', 'doctorDetails'],
     });
 
     if (!userInformation) {

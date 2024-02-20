@@ -17,7 +17,12 @@ export class UsersService {
 
   async findAll(): Promise<User[]> {
     return await this.usersRepository.find({
-      relations: ['user_type', 'user_info'], // Esto cargará la información de UserType
+      relations: [
+        'user_type',
+        'user_info',
+        'user_info.doctorDetails',
+        'user_info.gender',
+      ], // Esto cargará la información de UserType
     });
   }
 
@@ -45,7 +50,12 @@ export class UsersService {
   async findOne(id: number): Promise<User | null> {
     const user = await this.usersRepository.findOne({
       where: { id },
-      relations: ['user_type', 'user_info'], // Esto cargará la información de UserType
+      relations: [
+        'user_type',
+        'user_info',
+        'user_info.doctorDetails',
+        'user_info.gender',
+      ], // Esto cargará la información de UserType
     });
 
     if (!user) {
