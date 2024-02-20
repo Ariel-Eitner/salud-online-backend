@@ -20,8 +20,9 @@ export class UsersService {
       relations: [
         'user_type',
         'user_info',
-        'user_info.doctorDetails',
         'user_info.gender',
+        'user_info.doctorDetails',
+        'user_info.patientDetails',
       ], // Esto cargará la información de UserType
     });
   }
@@ -53,8 +54,9 @@ export class UsersService {
       relations: [
         'user_type',
         'user_info',
-        'user_info.doctorDetails',
         'user_info.gender',
+        'user_info.doctorDetails',
+        'user_info.patientDetails',
       ], // Esto cargará la información de UserType
     });
 

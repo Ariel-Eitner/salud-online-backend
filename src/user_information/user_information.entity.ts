@@ -10,6 +10,7 @@ import {
 import { User } from 'src/users/user.entity';
 import { Gender } from 'src/gender/gender.entity';
 import { DoctorDetails } from 'src/doctor_details/doctor_details.entity';
+import { PatientDetails } from 'src/patient_details/patient_details.entity';
 
 @Entity('user_information')
 export class UserInformation {
@@ -32,15 +33,15 @@ export class UserInformation {
   @JoinColumn({ name: 'gender_id' })
   gender: Gender;
 
-  // Relación con User
   @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  // @Column({ nullable: true }) // Puedes hacerlo nullable si es opcional
-  // doctor_id: number;
-
   @ManyToOne(() => DoctorDetails, { nullable: true })
   @JoinColumn({ name: 'doctor_id' })
   doctorDetails: DoctorDetails;
+
+  @ManyToOne(() => PatientDetails, { nullable: true })
+  @JoinColumn({ name: 'patient_id' })
+  patientDetails: PatientDetails;
 }

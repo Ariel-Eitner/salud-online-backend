@@ -18,6 +18,7 @@ import { GenderModule } from './gender/gender.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DoctorDetailsModule } from './doctor_details/doctor_details.module';
+import { PatientDetailsModule } from './patient_details/patient_details.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { DoctorDetailsModule } from './doctor_details/doctor_details.module';
     UserInformationModule,
     GenderModule,
     DoctorDetailsModule,
+    PatientDetailsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
