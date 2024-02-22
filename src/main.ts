@@ -4,7 +4,10 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const allowedOrigins = ['http://localhost:5173'];
+  const allowedOrigins = [
+    'http://localhost:5173',
+    'https://salud-online-client.netlify.app',
+  ];
   // Configuración de CORS
   app.enableCors({
     origin: (origin, callback) => {
