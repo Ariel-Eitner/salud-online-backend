@@ -1,22 +1,14 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+// update-user.dto.ts
+import { IsNumber, IsOptional } from 'class-validator';
+import { UserInformation } from 'src/user_information/user_information.entity';
+import { UserType } from 'src/user_type/user_type.entity';
 
 export class UpdateUserDto {
+  @IsNumber()
   @IsOptional()
-  @IsString()
-  @IsNotEmpty()
-  readonly first_name?: string;
+  user_type?: UserType;
 
+  @IsNumber()
   @IsOptional()
-  @IsString()
-  @IsNotEmpty()
-  readonly last_name?: string;
-
-  @IsOptional()
-  @IsString()
-  @IsNotEmpty()
-  readonly email?: string;
-
-  // @IsOptional()
-  // @IsInt()
-  // readonly user_type?: number;
+  user_info?: UserInformation;
 }

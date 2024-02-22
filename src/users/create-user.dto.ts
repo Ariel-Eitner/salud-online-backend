@@ -22,4 +22,8 @@ export class CreateUserDto {
   @IsInt()
   @IsOptional()
   user_type: number;
+
+  @IsInt()
+  @IsOptional()
+  user_info: number;
 }

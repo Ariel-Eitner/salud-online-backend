@@ -9,6 +9,7 @@ import {
   HttpStatus,
   HttpCode,
   NotFoundException,
+  Patch,
 } from '@nestjs/common';
 import { CreateUserDto } from './create-user.dto';
 import { UpdateUserDto } from './update-user.dto';
@@ -35,6 +36,18 @@ export class UsersController {
     return user;
   }
 
+  @Patch(':id')
+  async patch(
+    @Param('id') id: number,
+    @Body() updateUserDto: UpdateUserDto,
+  ): Promise<User> {
+    const user = await this.usersService.patchUser(id, updateUserDto);
+    if (!user) {
+      throw new NotFoundException(`User with ID ${id} not found`);
+    }
+    return user;
+  }
+
   // Crear un nuevo usuario
   @Post()
   @HttpCode(HttpStatus.CREATED)
@@ -48,7 +61,7 @@ export class UsersController {
     @Param('id') id: number,
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<User> {
-    const user = await this.usersService.update(id, updateUserDto);
+    const user = await this.usersService.patchUser(id, updateUserDto);
     if (!user) {
       throw new NotFoundException(`User with ID ${id} not found`);
     }
